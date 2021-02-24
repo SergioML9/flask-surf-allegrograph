@@ -19,8 +19,8 @@ setup(
     platforms='any',
     install_requires=[
         'Flask',
-        'surfrdf @ git+https://github.com/franzlst/surfrdf@master',
-        'surfrdf-allegrofranz-plugin @ git+https://github.com/SergioML9/surfrdf-allegrofranz-plugin@master',
+        'SuRF @ git+https://github.com/franzlst/surfrdf@master',
+        'surf.allegro_franz @ git+https://github.com/SergioML9/surfrdf-allegrofranz-plugin@master',
     ],
     classifiers=[
         'Environment :: Web Environment',
