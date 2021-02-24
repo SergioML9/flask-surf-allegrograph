@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
     name='Flask-SuRF-Allegrograph',
     version='0.1',
-    url='http://github.com/SergioML9/flask-surf-allegrograph/',
+    url='https://github.com/SergioML9/flask-surf-allegrograph/',
     license='BSD',
     author='Sergio Muñoz',
     author_email='sergio.munoz@upm.es',
@@ -19,8 +19,8 @@ setup(
     platforms='any',
     install_requires=[
         'Flask',
-        'surfrdf @ git+https://github.com:franzlst/surfrdf.git#egg=surfrdf',
-        'surfrdf-allegrofranz-plugin @ git+https://github.com:SergioML9/surfrdf-allegrofranz-plugin.git#egg=surfrdf-allegrofranz-plugin',
+        #'surfrdf @ git+https://github.com:franzlst/surfrdf.git#egg=surfrdf',
+        #'surfrdf-allegrofranz-plugin @ git+https://github.com:SergioML9/surfrdf-allegrofranz-plugin.git#egg=surfrdf-allegrofranz-plugin',
     ],
     classifiers=[
         'Environment :: Web Environment',
