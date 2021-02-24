@@ -11,13 +11,15 @@ class SurfAllegrograph(object):
     def init_app(self, app):
         app.config.setdefault('AGRAPH_HOST', 'localhost')
         app.config.setdefault('AGRAPH_PORT', '10035')
+        
+        app.teardown_appcontext(self.teardown)
+
+        session = self.connect()
 
         # Save this so we can use it later in the extension
         if not hasattr(app, "extensions"):  # pragma: no cover
             app.extensions = {}
-        app.extensions["flask-surf-allegrograph"] = self
-
-        app.teardown_appcontext(self.teardown)
+        app.extensions["flask-surf-allegrograph"] = session
 
     def connect(self):
         store = surf.Store(reader = 'allegro_franz', 
