@@ -27,7 +27,7 @@ class SurfAllegrograph(object):
 
     def teardown(self, exception):
         ctx = _app_ctx_stack.top
-        if hasattr(ctx, 'allegrograph_db'):
+        if hasattr(ctx, 'allegrograph_db'): #
             ctx.allegrograph_db.close()
 
     @property
