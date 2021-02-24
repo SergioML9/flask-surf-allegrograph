@@ -9,17 +9,25 @@ class SurfAllegrograph(object):
             self.init_app(app)
 
     def init_app(self, app):
+
+        if not app or not isinstance(app, Flask):
+            raise TypeError("Invalid Flask application instance")
+
+        self.app = app
+
+        app.extensions = getattr(app, "extensions", {})
+
+        if "surf-allegrograph" not in app.extensions:
+            app.extensions["surf-allegrograph"] = {}
+
         app.config.setdefault('AGRAPH_HOST', 'localhost')
         app.config.setdefault('AGRAPH_PORT', '10035')
         
-        app.teardown_appcontext(self.teardown)
-
+       # app.teardown_appcontext(self.teardown)
         session = self.connect()
+        s = {"app": app, "session": session}
+        app.extensions["surf-allegrograph"] = s
 
-        # Save this so we can use it later in the extension
-        if not hasattr(app, "extensions"):  # pragma: no cover
-            app.extensions = {}
-        app.extensions["flask-surf-allegrograph"] = session
 
     def connect(self):
         store = surf.Store(reader = 'allegro_franz', 
