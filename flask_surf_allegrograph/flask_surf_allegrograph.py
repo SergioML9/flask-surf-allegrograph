@@ -1,5 +1,5 @@
 import surf
-from flask import Flask, current_app, _app_ctx_stack
+from flask import current_app, _app_ctx_stack
 
 
 class SurfAllegrograph(object):
@@ -9,9 +9,6 @@ class SurfAllegrograph(object):
             self.init_app(app)
 
     def init_app(self, app):
-
-        if not app or not isinstance(app, Flask):
-            raise TypeError("Invalid Flask application instance")
 
         self.app = app
 
