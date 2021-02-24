@@ -20,12 +20,12 @@ class SurfAllegrograph(object):
         #app.config.setdefault('AGRAPH_HOST', 'localhost')
         #app.config.setdefault('AGRAPH_PORT', '10035')
         
-        with app.app_context():
-            session = self.connect(app.config)
-            s = {"app": app, "session": session}
-            app.extensions["surf-allegrograph"] = s
+        
+        session = self.connect(app.config)
+        s = {"app": app, "session": session}
+        app.extensions["surf-allegrograph"] = s
 
-        #app.teardown_appcontext(self.teardown)
+        app.teardown_appcontext(self.teardown)
 
 
     def connect(self, config):
