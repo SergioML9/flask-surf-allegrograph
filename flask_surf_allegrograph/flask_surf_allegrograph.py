@@ -1,5 +1,5 @@
 import surf
-from flask import current_app, _app_ctx_stack
+from flask import Flask, current_app, _app_ctx_stack
 
 
 class SurfAllegrograph(object):
