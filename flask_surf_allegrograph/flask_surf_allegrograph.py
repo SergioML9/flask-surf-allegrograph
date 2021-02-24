@@ -17,20 +17,22 @@ class SurfAllegrograph(object):
         if "surf-allegrograph" not in app.extensions:
             app.extensions["surf-allegrograph"] = {}
 
-        app.config.setdefault('AGRAPH_HOST', 'localhost')
-        app.config.setdefault('AGRAPH_PORT', '10035')
+        #app.config.setdefault('AGRAPH_HOST', 'localhost')
+        #app.config.setdefault('AGRAPH_PORT', '10035')
         
-       # app.teardown_appcontext(self.teardown)
-        session = self.connect()
+        
+        session = self.connect(app.config)
         s = {"app": app, "session": session}
         app.extensions["surf-allegrograph"] = s
 
+        app.teardown_appcontext(self.teardown)
 
-    def connect(self):
+
+    def connect(self, config):
         store = surf.Store(reader = 'allegro_franz', 
                    writer = 'allegro_franz',
-                   server = current_app.config['AGRAPH_HOST'],
-                   port = current_app.config['AGRAPH_PORT'],
+                   server = config['AGRAPH_HOST'],
+                   port = config['AGRAPH_PORT'],
                    catalog = 'ewetasker',
                    repository = 'ewetasker-db')
 
