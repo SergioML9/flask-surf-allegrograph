@@ -37,7 +37,7 @@ class SurfAllegrograph(object):
                    repository = 'ewetasker-db')
 
         print('Create the session')
-        session = surf.Session(store,{})
+        session = surf.Session(store,{}, auto_load=True)
         return session
 
     def teardown(self, exception):
